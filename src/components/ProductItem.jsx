@@ -6,9 +6,9 @@ const ProductItem = ({ data }) => {
     console.log('product id is ', id);
   }
   return (
-    <div>
-      <figure>
-        <img src={image} alt={`${title} image`} />
+    <div className='p-3 border border-gray-600 rounded-lg'>
+      <figure className='w-full h-52 bg-gray-50 p-3 rounded-lg'>
+        <img className='w-full h-full object-contain' src={image} alt={`${title} image`} />
       </figure>
       <h4>{title}</h4>
       <div>{price}</div>

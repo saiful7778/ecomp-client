@@ -28,3 +28,22 @@
     --pattern-line-color: #ffffff08;
   }
 }
+
+@layer components {
+  .loader {
+    @apply w-10 h-11 rounded-lg overflow-hidden;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: loader-animation 1.5s linear infinite;
+  }
+  @keyframes loader-animation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
