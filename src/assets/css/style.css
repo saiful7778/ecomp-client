@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .nav-link:hover {
+    @apply underline;
+  }
+  .nav-link.active {
+    @apply underline;
+  }
+}
+
+@layer components {
+  .main-bg {
+    @apply w-full min-h-screen bg-gray-200 text-gray-900 overflow-x-hidden p-2 transition-colors duration-300;
+    --pattern-line-color: #ffffff08;
+    --pattern-box-size: 20px;
+    background-image: linear-gradient(
+        var(--pattern-line-color) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to right, var(--pattern-line-color) 1px, transparent 1px);
+    background-size: var(--pattern-box-size) var(--pattern-box-size);
+  }
+  :is(.dark .main-bg) {
+    @apply bg-gray-900 text-gray-100;
+  }
+}

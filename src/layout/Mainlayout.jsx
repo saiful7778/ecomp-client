@@ -4,9 +4,11 @@ import Footer from "./Footer"
 
 const Mainlayout = () => {
   return (
-    <div>
-      <Navbar />
-      <Outlet />
+    <div className="main-bg">
+      <div className="container w-4/5 mx-auto">
+        <Navbar />
+        <Outlet />
+      </div>
       <Footer />
     </div>
   )
