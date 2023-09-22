@@ -31,8 +31,7 @@
 
 @layer components {
   .loader {
-    @apply w-10 h-11 rounded-lg overflow-hidden;
-    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    @apply w-10 rounded overflow-hidden;
     animation: loader-animation 1.5s linear infinite;
   }
   @keyframes loader-animation {
@@ -45,5 +44,11 @@
     100% {
       transform: scale(1);
     }
+  }
+}
+
+@layer components {
+  .icon-btn {
+    @apply rounded-full p-2 bg-gray-300 dark:bg-gray-800 border border-gray-700;
   }
 }
