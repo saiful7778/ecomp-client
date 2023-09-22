@@ -8,7 +8,7 @@ import Contact from "page/Contact";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/ecommerce/",
     element: <Mainlayout />,
     errorElement: <ErrorPage />,
     children: [
