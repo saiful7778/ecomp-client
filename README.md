@@ -1,4 +1,4 @@
-# My Ecommerce react app
+# Ecomp - a ecommerce react app
 
 ### Frontend technology
 
