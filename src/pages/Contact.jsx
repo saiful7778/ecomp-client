@@ -1,7 +1,7 @@
-const Contact = () => {
-  return (
-    <div>Contact</div>
-  )
-}
+import LoadingSpinner from "../layout/shared/LoadingSpinner";
 
-export default Contact
+const Contact = () => {
+  return <LoadingSpinner />;
+};
+
+export default Contact;
