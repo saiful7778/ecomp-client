@@ -1,13 +1,7 @@
 import { useLoaderData } from "react-router-dom";
-import { Cart } from "../layout/Mainlayout";
-import { useContext } from "react";
 
 const ProductDetails = () => {
   const { image, title, description, price, rating } = useLoaderData();
-  const [cartBox, setCartBox] = useContext(Cart);
-  const handleCart = () => {
-    setCartBox([...cartBox, { title: title, price: price }]);
-  };
   return (
     <div className="flex gap-4 mt-6">
       <div className="w-[45%]">
@@ -26,7 +20,6 @@ const ProductDetails = () => {
           <div>Count: {rating.count}</div>
         </div>
         <button
-          onClick={handleCart}
           className="px-6 py-3 font-bold bg-sky-400 text-gray-50 dark:bg-sky-600 rounded-lg"
           type="button"
         >

@@ -3,14 +3,11 @@ import { Link } from "react-router-dom";
 import { BiMoon } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsFillSunFill } from "react-icons/bs";
-import { useState, useEffect, useContext } from "react";
-import { Cart } from "../layout/Mainlayout";
-import uid from "../utility/uid";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(false);
   const [showCart, setShowCart] = useState(false);
-  const [cartBox] = useContext(Cart);
 
   useEffect(() => {
     if (localStorage.getItem("theme") === "dark") {
@@ -34,9 +31,6 @@ const Navbar = () => {
   const handleCart = () => {
     setShowCart(!showCart);
   };
-  const renderCartItems = cartBox.map((ele) => (
-    <div key={uid()}>{ele.title}</div>
-  ));
   return (
     <nav className="flex items-center py-2">
       <div className="flex-1">
@@ -74,20 +68,6 @@ const Navbar = () => {
           <button onClick={handleCart} className="ml-2 icon-btn" type="button">
             <AiOutlineShoppingCart />
           </button>
-          {cartBox.length ? (
-            <div className="absolute -top-2 -right-3 rounded-full text-xs bg-blue-500 text-gray-50 px-2 border border-gray-300">
-              {cartBox.length}
-            </div>
-          ) : (
-            ""
-          )}
-          {showCart && (
-            <div className="absolute top-10 right-0">
-              <div className="p-3 rounded-md bg-gray-300 dark:bg-gray-700 border border-gray-400 dark:border-gray-600 w-fit whitespace-nowrap">
-                {renderCartItems}
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </nav>
