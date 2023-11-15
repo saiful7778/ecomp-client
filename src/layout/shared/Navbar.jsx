@@ -9,28 +9,31 @@ import { navlinks } from "../../api/staticData";
 import "./sharedStyle.css";
 
 const Navbar = () => {
-  // `true` means dark mode
   const [theme, setTheme] = useState(true);
   const [showCart, setShowCart] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   useEffect(() => {
-    const themeData = localStorage.getItem("theme");
-    if (themeData === "dark") {
+    const storeTheme = localStorage.getItem("theme");
+    if (storeTheme === "dark") {
       document.body.classList.add("dark");
       setTheme(true);
-    } else {
+    } else if (storeTheme === "light") {
       setTheme(false);
       document.body.classList.remove("dark");
+    } else {
+      setTheme(true);
+      document.body.classList.add("dark");
     }
   }, []);
   const handleTheme = () => {
     setTheme((prop) => !prop);
-    if (document.body.classList.contains("dark")) {
-      document.body.classList.remove("dark");
-      localStorage.setItem("theme", "");
+    const bodyTheme = document.body.classList;
+    if (bodyTheme.contains("dark")) {
+      bodyTheme.remove("dark");
+      localStorage.setItem("theme", "light");
     } else {
-      document.body.classList.add("dark");
+      bodyTheme.add("dark");
       localStorage.setItem("theme", "dark");
     }
   };
