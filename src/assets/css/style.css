@@ -1,36 +1,25 @@
+@import url("./utility.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .nav-link:hover {
-    @apply underline;
-  }
-  .nav-link.active {
-    @apply underline;
-  }
+.main-bg {
+  --pattern-line-color: #00000015;
+  --pattern-line-width: 1px;
+  --pattern-box-size: 30px;
+  @apply w-full min-h-screen relative bg-gray-100 text-gray-900 overflow-x-hidden transition-colors duration-300;
+  background-image: linear-gradient(
+      var(--pattern-line-color) var(--pattern-line-width),
+      transparent var(--pattern-line-width)
+    ),
+    linear-gradient(
+      to right,
+      var(--pattern-line-color) var(--pattern-line-width),
+      transparent var(--pattern-line-width)
+    );
+  background-size: var(--pattern-box-size) var(--pattern-box-size);
 }
-
-@layer components {
-  .main-bg {
-    @apply w-full min-h-screen bg-gray-200 text-gray-900 overflow-x-hidden transition-colors duration-300;
-    --pattern-line-color: #00000015;
-    --pattern-box-size: 20px;
-    background-image: linear-gradient(
-        var(--pattern-line-color) 1px,
-        transparent 1px
-      ),
-      linear-gradient(to right, var(--pattern-line-color) 1px, transparent 1px);
-    background-size: var(--pattern-box-size) var(--pattern-box-size);
-  }
-  :is(.dark .main-bg) {
-    @apply bg-gray-900 text-gray-100;
-    --pattern-line-color: #ffffff08;
-  }
-}
-
-@layer components {
-  .icon-btn {
-    @apply rounded-full p-2 bg-gray-300 dark:bg-gray-800 border border-gray-700;
-  }
+:is(.dark .main-bg) {
+  @apply bg-gray-900 text-gray-50;
+  --pattern-line-color: #ffffff08;
 }

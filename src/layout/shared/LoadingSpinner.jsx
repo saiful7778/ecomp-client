@@ -1,5 +1,5 @@
 import loderAnimation from "../../assets/img/loader.gif";
-import "./styles.css";
+import "./sharedStyle.css";
 
 const LoadingSpinner = () => {
   return (

@@ -1,0 +1,15 @@
+@layer components {
+  .border-color {
+    @apply border-gray-500 dark:border-gray-700;
+  }
+}
+@layer components {
+  .container-bg {
+    @apply bg-gray-200 dark:bg-gray-800 border border-color;
+  }
+}
+@layer components {
+  .icon-btn {
+    @apply inline-flex items-center justify-center w-10 h-10 rounded-full container-bg;
+  }
+}

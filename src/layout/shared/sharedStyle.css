@@ -1,0 +1,75 @@
+.loader {
+  @apply flex justify-center items-center w-full min-h-[60vh];
+  animation: loader-animation 1.5s linear infinite;
+}
+@keyframes loader-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/*
+ * Navbar links item styles 
+ */
+.nav-link {
+  @apply capitalize select-none relative px-3;
+}
+.nav-link::before,
+.nav-link::after {
+  @apply absolute top-1/2 -translate-y-1/2 duration-200 opacity-0 invisible;
+}
+.nav-link::before {
+  @apply -left-2;
+  content: "{";
+}
+.nav-link::after {
+  @apply -right-2;
+  content: "}";
+}
+.nav-link:hover {
+  @apply underline;
+}
+.nav-link:hover::before,
+.nav-link:hover::after {
+  @apply opacity-100 visible;
+}
+.nav-link:hover::before {
+  @apply left-0;
+}
+.nav-link:hover::after {
+  @apply right-0;
+}
+.nav-link.active {
+  @apply underline;
+}
+.nav-link.active::before,
+.nav-link.active::after {
+  @apply opacity-100 visible;
+}
+.nav-link.active::before {
+  @apply left-0;
+}
+.nav-link.active::after {
+  @apply right-0;
+}
+.nav-link.pend,
+.nav-link.pend::before,
+.nav-link.pend::after {
+  @apply animate-pulse;
+}
+.nav-link.pend::before,
+.nav-link.pend::after {
+  @apply opacity-100 visible;
+}
+.nav-link.pend::before {
+  @apply left-0;
+}
+.nav-link.pend::after {
+  @apply right-0;
+}

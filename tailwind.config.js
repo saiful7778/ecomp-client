@@ -3,7 +3,11 @@ export default {
   content: ["./index.html", "./src/**/*.{jsx,tsx}"],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        "min-sm": "320px",
+      },
+    },
   },
   plugins: [],
 };
