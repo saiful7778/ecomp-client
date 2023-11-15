@@ -6,6 +6,7 @@ export default {
     extend: {
       screens: {
         "min-sm": "320px",
+        res: "768px",
       },
     },
   },

@@ -9,12 +9,14 @@ import { navlinks } from "../../api/staticData";
 import "./sharedStyle.css";
 
 const Navbar = () => {
-  const [theme, setTheme] = useState(false);
+  // `true` means dark mode
+  const [theme, setTheme] = useState(true);
   const [showCart, setShowCart] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("theme") === "dark") {
+    const themeData = localStorage.getItem("theme");
+    if (themeData === "dark") {
       document.body.classList.add("dark");
       setTheme(true);
     } else {
@@ -61,22 +63,22 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex items-center gap-2">
-          <ul className="md:flex hidden items-center gap-2">
+          <ul className="res:flex hidden items-center gap-2">
             {renderNavlinks}
           </ul>
           <button
             onClick={() => setShowMobileMenu((prop) => !prop)}
-            className="icon-btn md:hidden"
+            className="icon-btn res:hidden"
             type="button"
           >
             <LuMenuSquare size={20} />
           </button>
           <button onClick={handleTheme} className="icon-btn" type="button">
-            {!theme ? <BiMoon /> : <BsFillSunFill />}
+            {!theme ? <BiMoon size={20} /> : <BsFillSunFill size={20} />}
           </button>
           <div className="relative">
             <button onClick={handleCart} className="icon-btn" type="button">
-              <AiOutlineShoppingCart />
+              <AiOutlineShoppingCart size={20} />
             </button>
           </div>
         </div>
@@ -84,7 +86,7 @@ const Navbar = () => {
       <div
         className={`fixed top-0 ${
           showMobileMenu ? "right-0" : "-right-full"
-        } z-[100] min-h-screen w-52 duration-300 container-bg p-2 md:hidden block`}
+        } z-[100] min-h-screen w-52 duration-300 container-bg p-2 res:hidden block`}
       >
         <button
           onClick={() => setShowMobileMenu((prop) => !prop)}
@@ -93,7 +95,9 @@ const Navbar = () => {
         >
           <AiOutlineCloseCircle size={20} />
         </button>
-        <ul className="mt-4 space-y-3">{renderNavlinks}</ul>
+        <ul className="mt-4 divide-y divide-gray-400 dark:divide-gray-700 [&>*]:p-2">
+          {renderNavlinks}
+        </ul>
       </div>
     </>
   );
