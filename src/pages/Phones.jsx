@@ -11,6 +11,7 @@ const Phones = () => {
   const [type, setType] = useState("");
   const [itemPerPage, setItemPerPage] = useState(defItemPerPage);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
+  const [dataSort, setDataSort] = useState("");
 
   const numberOfPage = Math.ceil(totalItems / itemPerPage);
   const pages = [...Array(numberOfPage).keys()];
@@ -79,10 +80,14 @@ const Phones = () => {
                 <option value="phone">Phone</option>
                 <option value="watch">Watch</option>
               </SelectOptions>
-              <SelectOptions typeName="sort by" defaultValue="random">
-                <option value="random">Random</option>
-                <option value="low_to_high">Low to High</option>
-                <option value="high_to_low">High to Low</option>
+              <SelectOptions
+                typeName="sort by"
+                defaultValue=""
+                handleChange={(e) => setDataSort(e.target.value)}
+              >
+                <option value="">Random</option>
+                <option value="asc">Low to High</option>
+                <option value="dsc">High to Low</option>
               </SelectOptions>
             </div>
           )}
@@ -93,6 +98,7 @@ const Phones = () => {
         itemPerPage={itemPerPage}
         setTotalItems={setTotalItems}
         type={type}
+        dataSort={dataSort}
       />
       <Pagination
         paginationName="phpg"

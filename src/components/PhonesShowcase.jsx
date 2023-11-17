@@ -4,11 +4,23 @@ import PhoneItem from "./PhoneItem";
 import LoadingSpinner from "../layout/shared/LoadingSpinner";
 import PropTypes from "prop-types";
 
-const PhonesShowcase = ({ currentPage, itemPerPage, setTotalItems, type }) => {
+const PhonesShowcase = ({
+  currentPage,
+  itemPerPage,
+  setTotalItems,
+  type,
+  dataSort,
+}) => {
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["phones", { currentPage }, { itemPerPage }, { type }],
+    queryKey: [
+      "phones",
+      { currentPage },
+      { itemPerPage },
+      { type },
+      { dataSort },
+    ],
     queryFn: () =>
-      phonesDataLoader(currentPage, itemPerPage, setTotalItems, type),
+      phonesDataLoader(currentPage, itemPerPage, setTotalItems, type, dataSort),
   });
   if (isLoading) {
     return <LoadingSpinner />;
@@ -31,6 +43,7 @@ PhonesShowcase.propTypes = {
   itemPerPage: PropTypes.number,
   setTotalItems: PropTypes.func,
   type: PropTypes.string,
+  dataSort: PropTypes.string,
 };
 
 export default PhonesShowcase;
