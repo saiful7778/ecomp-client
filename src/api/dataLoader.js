@@ -1,7 +1,14 @@
 import axiosSecure from "../config/axios.config";
 
-export const productsDataLoader = async () => {
-  const res = await axiosSecure("/phones");
+export const phonesDataLoader = async (
+  currentPage,
+  itemsPerPage,
+  setTotalItems
+) => {
+  const res = await axiosSecure(
+    `/phones?page=${currentPage}&size=${itemsPerPage}`
+  );
+  setTotalItems(res.data.totalResult);
   return res.data;
 };
 export const productItemDataLoader = async ({ params }) => {

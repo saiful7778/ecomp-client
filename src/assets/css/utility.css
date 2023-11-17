@@ -10,7 +10,18 @@
 }
 @layer components {
   .btn {
-    @apply inline-flex justify-center items-center gap-2 p-2 font-semibold capitalize rounded-lg duration-300;
+    --padding: 8px;
+    --font-width: 600;
+    --font-size: 16px;
+    @apply inline-flex justify-center items-center gap-1 p-2 font-semibold capitalize rounded-lg duration-300;
+    padding: var(--padding);
+    font-weight: var(--font-width);
+    font-size: var(--font-size);
+  }
+  .btn-sm {
+    --padding: 6px;
+    --font-width: 500;
+    --font-size: 14px;
   }
   .btn-pri {
     @apply text-gray-50 bg-sky-600;
@@ -23,5 +34,20 @@
   }
   .icon-btn {
     @apply inline-flex items-center justify-center w-10 h-10 rounded-full container-bg;
+  }
+}
+
+@layer components {
+  .pagination-btn {
+    @apply py-0.5 px-2 rounded-lg text-gray-50 bg-sky-600 duration-300 text-sm;
+  }
+  .pagination-btn:active:focus {
+    @apply scale-95;
+  }
+  .pagination-item {
+    @apply py-0.5 px-1.5 rounded-lg text-sky-600 border border-sky-600 bg-none text-sm;
+  }
+  .pagination-item.active {
+    @apply text-gray-50 bg-sky-600;
   }
 }

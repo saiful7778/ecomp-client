@@ -11,7 +11,7 @@ import ProductDetails from "../pages/ProductDetails";
 import Contact from "../pages/Contact";
 
 // data loader
-import { productItemDataLoader, productsDataLoader } from "../api/dataLoader";
+import { productItemDataLoader } from "../api/dataLoader";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +25,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/phones",
-        loader: productsDataLoader,
         element: <Phones />,
       },
 
