@@ -8,7 +8,7 @@ const Mainlayout = () => {
   const loading = useNavigation();
   return (
     <div className="main-bg">
-      <div className="container w-4/5 mx-auto p-2">
+      <div className="container w-full md:w-4/5 mx-auto p-2">
         <header>
           <Navbar />
         </header>
