@@ -9,11 +9,11 @@ const Pagination = ({
   currentPage,
 }) => {
   return (
-    <div className="flex flex-col items-center justify-center gap-2 my-6">
-      <div className="flex items-center gap-2">
-        <button className="pagination-btn" onClick={handlePrev} type="button">
-          PREV
-        </button>
+    <div className="flex items-center justify-center gap-2 my-6">
+      <button className="pagination-btn" onClick={handlePrev} type="button">
+        PREV
+      </button>
+      <div className="flex flex-wrap gap-2 items-center justify-center">
         {pages.map((page, idx) => (
           <PaginationItem
             key={paginationName + idx}
@@ -23,10 +23,10 @@ const Pagination = ({
             currentPage={currentPage}
           />
         ))}
-        <button className="pagination-btn" onClick={handleNext} type="button">
-          NEXT
-        </button>
       </div>
+      <button className="pagination-btn" onClick={handleNext} type="button">
+        NEXT
+      </button>
     </div>
   );
 };

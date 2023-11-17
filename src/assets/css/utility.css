@@ -51,3 +51,9 @@
     @apply text-gray-50 bg-sky-600;
   }
 }
+
+@layer components {
+  .select {
+    @apply inline-flex cursor-pointer border-2 border-color bg-transparent py-1 px-2 rounded-md;
+  }
+}
