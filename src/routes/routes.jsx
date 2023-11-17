@@ -6,7 +6,7 @@ import Mainlayout from "../layout/Mainlayout";
 // pages
 import Home from "../pages/Home";
 import ErrorPage from "../pages/errorPage";
-import Products from "../pages/Products";
+import Phones from "../pages/Phones";
 import ProductDetails from "../pages/ProductDetails";
 import Contact from "../pages/Contact";
 
@@ -24,10 +24,11 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/products",
+        path: "/phones",
         loader: productsDataLoader,
-        element: <Products />,
+        element: <Phones />,
       },
+
       {
         path: "/products/:productId",
         loader: productItemDataLoader,
