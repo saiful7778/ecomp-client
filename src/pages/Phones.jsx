@@ -19,12 +19,19 @@ const Phones = () => {
     dataSort: "",
     priceRange: [minPrice, maxPrice],
   });
+  const [queryData, setQueryData] = useState({
+    brand: "",
+    type: "",
+    dataSort: "",
+    priceRange: [minPrice, maxPrice],
+  });
   const [showFilterOptions, setShowFilterOptions] = useState(false);
 
   const numberOfPage = Math.ceil(
     paginationData.totalItems / paginationData.itemPerPage
   );
   const pages = [...Array(numberOfPage).keys()];
+  console.log(query);
 
   const handlePagination = (data) => {
     setPaginationData({ ...paginationData, currentPage: data });
@@ -70,7 +77,7 @@ const Phones = () => {
             <CiFilter size={20} strokeWidth={1} /> <span>filter</span>
           </button>
           {showFilterOptions && (
-            <div className="absolute top-full right-0 z-50 container-bg p-4 rounded mt-1 text-gray-500 dark:text-gray-400 space-y-2 whitespace-nowrap">
+            <div className="absolute top-full right-0 z-50 container-bg p-4 rounded mt-1 text-sm text-gray-500 dark:text-gray-400 space-y-2 whitespace-nowrap">
               <SelectOptions
                 typeName="Item per page"
                 defaultValue={defItemPerPage.toString()}
@@ -117,31 +124,52 @@ const Phones = () => {
                 <option value="dsc">High to Low</option>
               </SelectOptions>
               <div className="flex items-center justify-between">
-                <label className="font-semibold mr-2 capitalize">
-                  Range({query.priceRange}):
-                </label>
-                <div className="flex flex-col">
-                  <div className="flex justify-between items-center text-sm">
-                    <span>${minPrice}</span>
-                    <span>${maxPrice}</span>
+                <label className="font-semibold mr-2 capitalize">Range:</label>
+                <div className="flex items-center justify-between gap-2 w-44 text-center">
+                  <div>
+                    <h6>Min</h6>
+                    <input
+                      className="input w-full"
+                      type="number"
+                      onChange={(e) =>
+                        setQuery({
+                          ...query,
+                          priceRange: [+e.target.value, query.priceRange[1]],
+                        })
+                      }
+                      defaultValue={minPrice}
+                    />
                   </div>
-                  <input
-                    onChange={(e) =>
-                      setQuery({ ...query, priceRange: +e.target.value })
-                    }
-                    value={query.priceRange}
-                    type="range"
-                    min={minPrice}
-                    max={maxPrice}
-                  />
+                  <div>to</div>
+                  <div>
+                    <h6>Max</h6>
+                    <input
+                      className="input w-full"
+                      type="number"
+                      onChange={(e) =>
+                        setQuery({
+                          ...query,
+                          priceRange: [query.priceRange[0], +e.target.value],
+                        })
+                      }
+                      defaultValue={maxPrice}
+                    />
+                  </div>
                 </div>
               </div>
+              <button
+                onClick={() => setQueryData(query)}
+                className="btn btn-pri btn-sm w-full"
+                type="button"
+              >
+                apply
+              </button>
             </div>
           )}
         </div>
       </div>
       <PhonesShowcase
-        queryData={query}
+        queryData={queryData}
         paginationData={paginationData}
         setTotalItems={setPaginationData}
       />
@@ -162,8 +190,9 @@ const SelectOptions = ({ typeName, children, defaultValue, handleChange }) => {
     <div className="flex items-center justify-between">
       <label className="font-semibold mr-2 capitalize">{typeName}:</label>
       <select
+        name={typeName.split(" ").join("_").toLowerCase()}
         onChange={handleChange}
-        className="select w-32"
+        className="select w-44"
         defaultValue={defaultValue}
       >
         {children}

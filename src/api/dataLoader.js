@@ -5,9 +5,14 @@ export const phonesDataLoader = async (
   paginationData,
   setTotalItems
 ) => {
-  const res = await axiosSecure(
-    `/phones?page=${paginationData.currentPage}&size=${paginationData.itemPerPage}&type=${queryData.type}&sort=${queryData.dataSort}`
-  );
+  const res = await axiosSecure.get("/phones", {
+    params: {
+      page: paginationData.currentPage,
+      size: paginationData.itemPerPage,
+      type: queryData.type,
+      sort: queryData.dataSort,
+    },
+  });
   const totalResult = res.data.totalResult;
   // const count = res.data?.count;
   setTotalItems({ ...paginationData, totalItems: totalResult });

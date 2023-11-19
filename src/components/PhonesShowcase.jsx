@@ -10,6 +10,7 @@ const PhonesShowcase = ({ queryData, paginationData, setTotalItems }) => {
       "phones",
       { currentPage: paginationData.currentPage },
       { itemPerPage: paginationData.itemPerPage },
+      queryData,
     ],
     queryFn: () => phonesDataLoader(queryData, paginationData, setTotalItems),
   });
